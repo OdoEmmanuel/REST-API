@@ -33,6 +33,9 @@ class BookController extends Controller
             'author_id' => 'required',
             'abstact' => 'required'
         ]);
+        if($validate->fails()){
+            return response($validate->errors(),400);
+        }
         return response(new BookResource(Book::create($validate->validate())), 201);
     }
 
@@ -61,6 +64,9 @@ class BookController extends Controller
             'author_id' => 'required',
             'abstact' => 'required'
         ]);
+        if($validate->fails()){
+            return response($validate->errors(),400);
+        }
         $book->update($validate->validate());
         return response(new BookResource($book), 200);
     }
