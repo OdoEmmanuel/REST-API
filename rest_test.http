@@ -1,0 +1,80 @@
+### All Authors
+
+GET http://127.0.0.1:8000/api/authors/
+
+### Single Authoer
+GET http://127.0.0.1:8000/api/authors/10
+
+
+### All books
+
+GET http://127.0.0.1:8000/api/books/
+
+### POST request
+POST http://127.0.0.1:8000/api/authors/
+
+Content-Type: application/json
+
+{
+  "name": "Emmanuel",
+  "title": "Developer",
+  "company": "Novaji",
+  "email": "emmanuel@gmail.com"
+}
+
+### Put request
+POST http://127.0.0.1:8000/api/authors/10?_method=PUT
+
+Content-Type: application/json
+
+{
+  "name": "David",
+  "title": "Lead Developer",
+  "company": "Novaji",
+  "email": "emmanuel@gmail.com"
+}
+
+
+### Put Delete
+DELETE  http://127.0.0.1:8000/api/authors/10
+
+
+
+
+
+
+### All Book
+
+GET http://127.0.0.1:8000/api/books/
+
+### Single book
+GET http://127.0.0.1:8000/api/books/10
+
+
+### POST request
+POST http://127.0.0.1:8000/api/books/
+
+Content-Type: application/json
+
+{
+
+  "title": "Developer",
+  "author_id": "1",
+  "abstract": "nvkv vbvksv kjv yigb s sssnjvisk bvmbshv bvhdvb vibvsshyv bbaivb"
+}
+
+### Put request
+POST http://127.0.0.1:8000/api/books/10?_method=PUT
+
+Content-Type: application/json
+
+{
+  "name": "David",
+  "title": "Lead Developer",
+  "company": "Novaji",
+  "email": "emmanuel@gmail.com"
+}
+
+
+### Put Delete
+DELETE  http://127.0.0.1:8000/api/books/10

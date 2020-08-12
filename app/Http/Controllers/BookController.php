@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Http\Resources\BookResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class BookController extends Controller
 {
@@ -14,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return response(Book::all(), 200);
+        return response(BookResource::collection(Book::all()), 200);
     }
 
     /**
@@ -25,12 +28,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(),[
             'title' => 'required',
             'author_id' => 'required',
             'abstact' => 'required'
         ]);
-        $book = Book::create($data);
+        return response(new BookResource(Book::create($validate->validate())), 201);
     }
 
     /**
@@ -41,7 +44,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return response($book, 200);
+        return response(new BookResource($book), 200);
     }
 
     /**
@@ -53,13 +56,13 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(),[
             'title' => 'required',
             'author_id' => 'required',
             'abstact' => 'required'
         ]);
-
-        return response($book->update($data), 200);
+        $book->update($validate->validate());
+        return response(new BookResource($book), 200);
     }
 
     /**
